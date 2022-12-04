@@ -15,7 +15,7 @@ function App() {
       <LogoContainer />
       {cards.map(card => {
         cont++
-        return < Pergunta data-test="flashcard" respondidas={respondidas} setRespondidas={setRespondidas} key={cont} cont = { cont } question = { card.question } answer = { card.answer } />
+        return < Pergunta respondidas={respondidas} setRespondidas={setRespondidas} key={cont} cont = { cont } question = { card.question } answer = { card.answer } />
       })}
       <FooterConcluidos quantTotal={cont} quantResp={respondidas.length}/>
     </ScreenContainer>

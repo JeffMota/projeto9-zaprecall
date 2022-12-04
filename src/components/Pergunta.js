@@ -50,14 +50,14 @@ export default function Pergunta({ question, answer, cont, respondidas, setRespo
 
   return (
     <>{(!abertas.includes(question)) ?
-      <PerguntaFechada cor={cor}>
+      <PerguntaFechada data-test="flashcard" cor={cor}>
         <p data-test="flashcard-text" >{`Pergunta ${cont}`}</p>
         <button disabled={(respondidas.includes(question)) ? true : false}>
           <img data-test={test} onClick={() => mostrarPergunta(question)} src={icone} />
         </button>
       </PerguntaFechada> :
 
-      <PerguntaAberta >
+      <PerguntaAberta data-test="flashcard" >
         <p data-test="flashcard-text" >{(respostas.includes(question)) ? answer : question}</p>
         {(respostas.includes(question)) ?
           <ContainerBotoes>
