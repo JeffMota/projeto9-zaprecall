@@ -12,6 +12,7 @@ export default function Pergunta({ question, answer, cont, respondidas, setRespo
   
   const [cor, setCor] = useState('#333')
   const [icone, setIcone] = useState(setaPlay)
+  const [test, setTest] = useState("play-btn")
 
   function mostrarPergunta(pergunta) {
     let aux = []
@@ -32,26 +33,39 @@ export default function Pergunta({ question, answer, cont, respondidas, setRespo
     setCor(cor)
     setRespondidas(aux)
     setIcone(icone)
+    switch(icone){
+      case iconeCerto:
+        setTest("zap-icon")
+        break
+
+      case iconeErro:
+        setTest("no-icon")
+        break
+      
+      case iconeQuase:
+        setTest("partial-icon")
+        break
+    }
   }
 
   return (
     <>{(!abertas.includes(question)) ?
       <PerguntaFechada cor={cor}>
-        <p>{`Pergunta ${cont}`}</p>
+        <p data-test="flashcard-text" >{`Pergunta ${cont}`}</p>
         <button disabled={(respondidas.includes(question)) ? true : false}>
-          <img onClick={() => mostrarPergunta(question)} src={icone} />
+          <img data-test={test} onClick={() => mostrarPergunta(question)} src={icone} />
         </button>
       </PerguntaFechada> :
 
       <PerguntaAberta >
-        <p>{(respostas.includes(question)) ? answer : question}</p>
+        <p data-test="flashcard-text" >{(respostas.includes(question)) ? answer : question}</p>
         {(respostas.includes(question)) ?
           <ContainerBotoes>
-            <button onClick={() => responder('#FF3030', question, iconeErro)}>Não lembrei</button>
-            <button onClick={() => responder('#FF922E', question, iconeQuase)}>Quase lembrei</button>
-            <button onClick={() => responder('#2FBE34', question, iconeCerto)}>Zap!</button>
+            <button data-test="no-btn" onClick={() => responder('#FF3030', question, iconeErro)}>Não lembrei</button>
+            <button data-test="partial-btn" onClick={() => responder('#FF922E', question, iconeQuase)}>Quase lembrei</button>
+            <button data-test="zap-btn" onClick={() => responder('#2FBE34', question, iconeCerto)}>Zap!</button>
           </ContainerBotoes> :
-          <img onClick={() => mostrarResposta(question)} src={setaVirar} />
+          <img data-test="turn-btn" onClick={() => mostrarResposta(question)} src={setaVirar} />
         }
       </PerguntaAberta>
     }

@@ -11,14 +11,14 @@ function App() {
   const [respondidas, setRespondidas] = useState([])
 
   return (
-    <div className="screen-container">
+    <ScreenContainer>
       <LogoContainer />
       {cards.map(card => {
         cont++
-        return < Pergunta respondidas={respondidas} setRespondidas={setRespondidas} key={cont} cont = { cont } question = { card.question } answer = { card.answer } />
+        return < Pergunta data-test="flashcard" respondidas={respondidas} setRespondidas={setRespondidas} key={cont} cont = { cont } question = { card.question } answer = { card.answer } />
       })}
       <FooterConcluidos quantTotal={cont} quantResp={respondidas.length}/>
-    </div>
+    </ScreenContainer>
   );
 }
 
@@ -26,7 +26,6 @@ export default App;
 
 
 const ScreenContainer = styled.div`
-    @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@400;700&family=Righteous&display=swap');
 
     background-color: #FB6B6B;
     width: 100vw;

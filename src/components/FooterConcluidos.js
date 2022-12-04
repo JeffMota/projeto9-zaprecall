@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 export default function FooterConcluidos({quantTotal, quantResp}) {
     return (
-        <FooterContainer>
+        <FooterContainer data-test="footer">
             <p>{quantResp}/{quantTotal} CONCLUÍDOS</p>
         </FooterContainer>
     )
