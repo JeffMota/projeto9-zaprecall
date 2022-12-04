@@ -6,10 +6,10 @@ import iconeErro from '../assets/img/icone_erro.png'
 import iconeCerto from '../assets/img/icone_certo.png'
 import iconeQuase from '../assets/img/icone_quase.png'
 
-export default function Pergunta({ question, answer, cont }) {
+export default function Pergunta({ question, answer, cont, respondidas, setRespondidas }) {
   const [abertas, setAbertas] = useState([])
   const [respostas, setRespostas] = useState([])
-  const [respondidas, setRespondidas] = useState([])
+  
   const [cor, setCor] = useState('#333')
   const [icone, setIcone] = useState(setaPlay)
 
